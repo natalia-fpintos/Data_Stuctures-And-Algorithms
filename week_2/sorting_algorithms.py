@@ -1,15 +1,4 @@
-import numpy
-from sorting-algorithms import time_algorithm
-
-# Small datasets
-values_selection = [2, 9, 7, 5, 8, 3, 1, 6, 4]
-values_bubble = values_selection.copy()
-values_bubble_e = values_selection.copy()
-
-# Large datasets
-big_data_selection = numpy.random.randint(0, 101, 1000)  # 1000 random ints between 0-100 inclusive
-big_data_bubble = numpy.random.randint(0, 101, 1000)
-big_data_bubble_e = numpy.random.randint(0, 101, 1000)
+from utils.utils import time_algorithm, data, big_data
 
 
 @time_algorithm
@@ -59,28 +48,34 @@ def swap(idx1, idx2, list_ref):
 
 if __name__ == "__main__":
     # Selection sort
+    values_selection = data.copy()
     selection_sort(values_selection)
     print(values_selection)
     print()
 
     # Bubble sort
+    values_bubble = data.copy()
     bubble_sort(values_bubble)
     print(values_bubble)
     print()
 
     # Bubble sort enhanced
+    values_bubble_e = data.copy()
     bubble_sort_enhanced(values_bubble_e)
     print(values_bubble_e)
     print()
 
     # Selection sort - large dataset
+    big_data_selection = big_data.copy()
     selection_sort(big_data_selection)
     print()
 
     # Bubble sort - large dataset
+    big_data_bubble = big_data.copy()
     bubble_sort(big_data_bubble)
     print()
 
     # Bubble sort enhanced - large dataset
+    big_data_bubble_e = big_data.copy()
     bubble_sort_enhanced(big_data_bubble_e)
     print()
