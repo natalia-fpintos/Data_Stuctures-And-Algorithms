@@ -1,5 +1,5 @@
-import time
 import numpy
+from sorting-algorithms import time_algorithm
 
 # Small datasets
 values_selection = [2, 9, 7, 5, 8, 3, 1, 6, 4]
@@ -10,16 +10,6 @@ values_bubble_e = values_selection.copy()
 big_data_selection = numpy.random.randint(0, 101, 1000)  # 1000 random ints between 0-100 inclusive
 big_data_bubble = numpy.random.randint(0, 101, 1000)
 big_data_bubble_e = numpy.random.randint(0, 101, 1000)
-
-
-def time_algorithm(f):
-    def _time(*args, **kwargs):
-        start = time.time() * 1000
-        f(*args, **kwargs)
-        end = time.time() * 1000
-        print('Algorithm took {} ms'.format(end - start))
-
-    return _time
 
 
 @time_algorithm
