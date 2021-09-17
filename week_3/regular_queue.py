@@ -1,4 +1,4 @@
-class queue:
+class RegularQueue:
     def __init__(self, size):
         self.queue = [None for _ in range(size)]
         self.front = 0
@@ -23,9 +23,9 @@ class queue:
             self.front = -1
         self.front += 1
         self.count -= 1
-        return item
-
         print('current queue: {}'.format(self.queue))
+
+        return item
 
     def peek_front(self):
         return self.queue[self.front]
@@ -34,9 +34,8 @@ class queue:
         return self.count == 0
 
 
-
 if __name__ == '__main__':
-    my_queue = queue(4)
+    my_queue = RegularQueue(4)
     my_queue.insert(1)
     my_queue.insert(2)
     my_queue.insert(3)
