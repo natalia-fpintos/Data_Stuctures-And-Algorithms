@@ -16,14 +16,18 @@ class Stack:
     return self.stack_data[self.top]
 
   def pop(self):
-    item = self.stack_data[self.top]
-    self.stack_data[self.top] = None
-    self.top -= 1
-    return item
+    if not self.is_empty():
+      item = self.peek()
+      self.top -= 1
+      return item
+    print("The stack is empty: cannot pop item")
 
   def push(self, value):
-    self.top += 1
-    self.stack_data[self.top] = value
+    if not self.is_full():
+      self.top += 1
+      self.stack_data[self.top] = value
+    else:
+      print("The stack is full: cannot push item")
 
 
 class Link:
@@ -57,12 +61,12 @@ if __name__ == "__main__":
 
   a_stack = Stack(5)
 
-  for i in range(4):
+  for i in range(6):
     a_stack.push(i)
     
   print(a_stack.stack_data)
 
-  while not a_stack.is_empty():
+  for _ in range(6):
     print(f"Stack item popped: {a_stack.pop()}")
 
   print("Linked list stack exercises:")
