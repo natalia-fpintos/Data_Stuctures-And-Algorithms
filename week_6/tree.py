@@ -33,6 +33,9 @@ class Tree:
             local_root.display()
             self.display_in_order(local_root.right_child)
 
+    def less_than(self, new_node, existing_node):
+        return new_node < existing_node
+
     def insert(self, data):
         new_node = Node(data)
 
@@ -45,7 +48,7 @@ class Tree:
             while True:
                 # Keep track of the current node as a "parent" for the new node
                 parent = current
-                if data < current.data:
+                if self.less_than(data, current.data):
                     # The new node is smaller than the current node, we move left
                     current = current.left_child
                     if current is None:
