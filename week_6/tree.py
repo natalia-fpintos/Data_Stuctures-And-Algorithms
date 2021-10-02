@@ -34,10 +34,13 @@ class Tree:
             self.display_in_order(local_root.right_child)
 
     def less_than(self, new_node, existing_node):
-        return new_node < existing_node
+        return new_node.data < existing_node.data
 
-    def insert(self, data):
-        new_node = Node(data)
+    def _create_tree_node(self, *args, **kwargs):
+        return Node(*args)
+        
+    def insert(self, *args, **kwargs):
+        new_node = self._create_tree_node(*args)
 
         if self.root is None:
             # Tree is empty
@@ -48,7 +51,7 @@ class Tree:
             while True:
                 # Keep track of the current node as a "parent" for the new node
                 parent = current
-                if self.less_than(data, current.data):
+                if self.less_than(new_node, current):
                     # The new node is smaller than the current node, we move left
                     current = current.left_child
                     if current is None:

@@ -1,4 +1,5 @@
-from week_6.tree import Tree
+import random
+from tree import Tree
 
 
 class Player:
@@ -9,7 +10,7 @@ class Player:
         self.right_child = None
 
     def display(self):
-        print(f"Level: ${self.level}. Kills: ${self.kills}")
+        print(f"Level: {self.level}. Kills: {self.kills}")
 
     def factorial(self, n):
         if n == 1:
@@ -22,6 +23,9 @@ class Player:
 
 
 class PlayerTree(Tree):
+    def _create_tree_node(self, *args, **kwargs):
+        return Player(*args)
+    
     def less_than(self, new_node, existing_node):
         return new_node.score < existing_node.score
         
@@ -29,5 +33,9 @@ class PlayerTree(Tree):
 if __name__ == "__main__":
     player_tree = PlayerTree()
     for _ in range(10):
-        player_tree.insert()
+        level = random.randint(1, 10)
+        kills = random.randint(1, 10)
+        player_tree.insert(level, kills)
+    
+    player_tree.display_in_order(player_tree.root)
 
