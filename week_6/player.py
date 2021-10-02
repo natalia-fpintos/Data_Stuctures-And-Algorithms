@@ -23,4 +23,11 @@ class Player:
 
 class PlayerTree(Tree):
     def less_than(self, new_node, existing_node):
-        pass
+        return new_node.score < existing_node.score
+        
+
+if __name__ == "__main__":
+    player_tree = PlayerTree()
+    for _ in range(10):
+        player_tree.insert()
+
